@@ -13,6 +13,9 @@ async function bootstrap() {
     .setDescription('A microsoft pirate server for xbox games')
     .setVersion('1.0.0')
     .addTag('status')
+    .addTag('auth')
+    .addTag('user')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
