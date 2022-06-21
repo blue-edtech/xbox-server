@@ -15,7 +15,7 @@ model User{
   name     String    
   email    String  @unique
   password String 
-  CPF      String     @unique 
+  CPF      String  @unique 
   isAdmin  Boolean @default(false)
 
   createdAt DateTime @default(now())

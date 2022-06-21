@@ -8,23 +8,36 @@ import { User } from './entities/user.entity';
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(dto: CreateUserDto) {
-    return this.prisma.user.create({ data: dto });
+  async create(dto: CreateUserDto) {
+    return await this.prisma.user.create({ data: dto });
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    return await this.prisma.user.findMany();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string) {
+    return await this.prisma.user.findFirst({
+      where: {
+        id,
+      },
+    });
   }
 
-  update(id: string, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, dto: UpdateUserDto) {
+    const data: Partial<User> = { ...dto };
+    return this.prisma.user.update({
+      where: { id },
+      data,
+    });
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    await this.prisma.user.delete({
+      where: {
+        id,
+      },
+    });
+    return { message: 'deletado com sucesso' };
   }
 }
