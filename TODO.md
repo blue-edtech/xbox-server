@@ -1,0 +1,4 @@
+# Endpoints
+- Games
+- Genres
+- Favorites
