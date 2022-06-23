@@ -11,12 +11,48 @@ datasource db {
 }
 
 model User{
-  id       String  @id @default(uuid())
-  name     String    
-  email    String  @unique
-  password String 
-  CPF      String  @unique 
-  isAdmin  Boolean @default(false)
+  id        String  @id @default(uuid())
+  name      String    
+  email     String  @unique
+  password  String 
+  CPF       String  @unique 
+  isAdmin   Boolean @default(false)
+  profiles  Profile[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Profile{
+  id        String  @id @default(uuid())
+  Title     String  @unique
+  ImageURL  String  
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String  @map("user_id")
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Game{
+  id                 String  @id @default(uuid())
+  Title              String  @unique
+  CoverImageURL      String
+  Description        String
+  Year               Int
+  ImdbScore          Int
+  TrailerYouTubeUrl  String
+  GameplayYouTubeUrl String
+  Genres Genre[]
+  
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Genre{
+  id        String  @id @default(uuid())
+  Name      String  @unique
+  Games     Game[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
