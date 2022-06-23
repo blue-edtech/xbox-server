@@ -20,10 +20,17 @@ import { LoggedUser } from './logged-user.decorator';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  /**
+   * Recebe uma requisição GET e retorna um objeto de status
+   * da aplicação com a URL de documentação
+   * @param req Objeto de Request do Express
+   * @returns Objeto de status da aplicação
+   */
+
   @Post() // < Novo Decorator
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Realizar login, recebendo um token de autenticação',
+    summary: 'Login, getting an authentication token',
   })
   login(@Body() loginDto: LoginDto): Promise<LoginResponseDto> {
     return this.authService.login(loginDto);
@@ -32,7 +39,7 @@ export class AuthController {
   @Get()
   @UseGuards(AuthGuard())
   @ApiOperation({
-    summary: 'Retorna o usuário autenticado no momento',
+    summary: 'Return a User authenticated at the moment',
   })
   @ApiBearerAuth()
   profile(@LoggedUser() user: User) {
