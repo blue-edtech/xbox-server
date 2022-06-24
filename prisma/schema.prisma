@@ -25,11 +25,11 @@ model User{
 
 model Profile{
   id        String  @id @default(uuid())
-  Title     String  @unique
-  ImageURL  String  
+  title     String  @unique
+  imageURL  String  
   user      User    @relation(fields: [userId], references: [id])
   userId    String  @map("user_id")
-  ProfileGames ProfileGame[]
+  profileGames ProfileGame[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -37,15 +37,15 @@ model Profile{
 
 model Game{
   id                 String  @id @default(uuid())
-  Title              String  @unique
-  CoverImageURL      String
-  Description        String
-  Year               Int
-  ImdbScore          Int
-  TrailerYouTubeUrl  String
-  GameplayYouTubeUrl String
-  Genres Genre[]
-  ProfileGames ProfileGame[]
+  title              String  @unique
+  coverImageURL      String
+  description        String
+  year               Int
+  imdbScore          Int
+  trailerYouTubeUrl  String
+  gameplayYouTubeUrl String
+  genres Genre[]
+  profileGames ProfileGame[]
   
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
@@ -53,8 +53,8 @@ model Game{
 
 model Genre{
   id        String  @id @default(uuid())
-  Name      String  @unique
-  Games     Game[]
+  name      String  @unique
+  games     Game[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

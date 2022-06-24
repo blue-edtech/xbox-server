@@ -15,6 +15,7 @@ async function bootstrap() {
     .addTag('status')
     .addTag('auth')
     .addTag('user')
+    .addTag('games')
     .addBearerAuth()
     .build();
 
