@@ -1,26 +1,48 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateGenreDto } from './dto/create-genre.dto';
 import { UpdateGenreDto } from './dto/update-genre.dto';
+import { Genre } from './entities/genre.entity';
 
 @Injectable()
 export class GenresService {
-  create(createGenreDto: CreateGenreDto) {
-    return 'This action adds a new genre';
+  constructor(private readonly prisma: PrismaService) {}
+
+  async create(dto: CreateGenreDto) {
+    return await this.prisma.genre.create({ data: dto });
   }
 
-  findAll() {
-    return `This action returns all genres`;
+  async findAll() {
+    return await this.prisma.genre.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} genre`;
+  async findAllGames() {
+    return await this.prisma.genre.findMany({
+      include: {
+        games: {
+          select: {
+            id: true,
+            title: true,
+          },
+        },
+      },
+    });
   }
 
-  update(id: number, updateGenreDto: UpdateGenreDto) {
-    return `This action updates a #${id} genre`;
+  async findOne(id: string) {
+    return await this.prisma.genre.findUnique({ where: { id } });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} genre`;
+  async update(id: string, dto: UpdateGenreDto) {
+    const data: Partial<Genre> = { ...dto };
+    return this.prisma.genre.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async remove(id: string) {
+    await this.prisma.genre.delete({ where: { id } });
+    return { message: 'Genre successfully deleted' };
   }
 }

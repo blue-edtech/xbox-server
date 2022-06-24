@@ -6,15 +6,24 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ProfilesService } from './profiles.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@UseGuards(AuthGuard())
+@ApiBearerAuth()
+@ApiTags('profile')
 @Controller('profiles')
 export class ProfilesController {
   constructor(private readonly profilesService: ProfilesService) {}
 
+  @ApiOperation({
+    summary: 'Create a Game',
+  })
   @Post()
   create(@Body() createProfileDto: CreateProfileDto) {
     return this.profilesService.create(createProfileDto);

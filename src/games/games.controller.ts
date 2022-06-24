@@ -16,7 +16,7 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @UseGuards(AuthGuard())
 @ApiBearerAuth()
-@ApiTags('games')
+@ApiTags('game')
 @Controller('games')
 export class GamesController {
   constructor(private readonly gamesService: GamesService) {}
