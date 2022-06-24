@@ -35,11 +35,13 @@ export class GamesService {
   async findOne(id: string) {
     return await this.prisma.game.findUnique({
       where: { id },
-      // genres: {
-      //   select: {
-      //     name: true,
-      //   },
-      // },
+      include: {
+        genres: {
+          select: {
+            name: true,
+          },
+        },
+      },
     });
   }
 
