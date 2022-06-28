@@ -24,28 +24,40 @@ export class GenresController {
   constructor(private readonly genresService: GenresService) {}
 
   @ApiOperation({
-    summary: 'Create a Game',
+    summary: 'Create a new Genre',
   })
   @Post()
   create(@Body() createGenreDto: CreateGenreDto, @LoggedUser() user: User) {
     return this.genresService.create(createGenreDto, user);
   }
 
+  @ApiOperation({
+    summary: 'Get a list of all Genres from the database',
+  })
   @Get()
   findAll() {
     return this.genresService.findAll();
   }
 
+  @ApiOperation({
+    summary: 'Get a list of all Games by Genre from the database',
+  })
   @Get('/games')
   findAllGames() {
     return this.genresService.findAllGames();
   }
 
+  @ApiOperation({
+    summary: 'Get a Genre by ID',
+  })
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.genresService.findOne(id);
   }
 
+  @ApiOperation({
+    summary: 'Use to update partial or total a Genre by ID',
+  })
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -55,6 +67,9 @@ export class GenresController {
     return this.genresService.update(id, updateGenreDto, user);
   }
 
+  @ApiOperation({
+    summary: 'Remove a Genre by ID',
+  })
   @Delete(':id')
   remove(@Param('id') id: string, @LoggedUser() user: User) {
     return this.genresService.remove(id, user);

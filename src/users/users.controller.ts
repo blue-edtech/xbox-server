@@ -42,7 +42,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Get()
   @ApiOperation({
-    summary: 'Get a list of All Users on database',
+    summary: 'Get a list of all Users from the database',
   })
   findAll() {
     return this.usersService.findAll();

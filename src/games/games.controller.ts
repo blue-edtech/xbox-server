@@ -32,7 +32,7 @@ export class GamesController {
   }
 
   @ApiOperation({
-    summary: 'Get a list of All Games on database',
+    summary: 'Get a list of all Games from the database',
   })
   @Get()
   findAll() {
