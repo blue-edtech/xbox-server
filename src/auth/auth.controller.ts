@@ -13,7 +13,7 @@ import { User } from 'src/users/entities/user.entity';
 import { AuthService } from './auth.service';
 import { LoginResponseDto } from './dto/login-response.dto';
 import { LoginDto } from './dto/login.dto';
-import { LoggedUser } from './logged-user.decorator';
+import { LoggedUser } from '../utils/logged-user.decorator';
 
 @ApiTags('auth')
 @Controller('auth')

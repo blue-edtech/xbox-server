@@ -13,6 +13,8 @@ import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { LoggedUser } from 'src/utils/logged-user.decorator';
+import { User } from 'src/users/entities/user.entity';
 
 @UseGuards(AuthGuard())
 @ApiBearerAuth()
@@ -25,7 +27,8 @@ export class ProfilesController {
     summary: 'Create a Game',
   })
   @Post()
-  create(@Body() createProfileDto: CreateProfileDto) {
+  create(@Body() createProfileDto: CreateProfileDto, @LoggedUser() user: User) {
+    createProfileDto.userId = user.id;
     return this.profilesService.create(createProfileDto);
   }
 

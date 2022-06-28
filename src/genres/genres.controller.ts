@@ -13,6 +13,8 @@ import { CreateGenreDto } from './dto/create-genre.dto';
 import { UpdateGenreDto } from './dto/update-genre.dto';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { LoggedUser } from 'src/utils/logged-user.decorator';
+import { User } from 'src/users/entities/user.entity';
 
 @UseGuards(AuthGuard())
 @ApiBearerAuth()
@@ -25,8 +27,8 @@ export class GenresController {
     summary: 'Create a Game',
   })
   @Post()
-  create(@Body() createGenreDto: CreateGenreDto) {
-    return this.genresService.create(createGenreDto);
+  create(@Body() createGenreDto: CreateGenreDto, @LoggedUser() user: User) {
+    return this.genresService.create(createGenreDto, user);
   }
 
   @Get()
@@ -45,12 +47,16 @@ export class GenresController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGenreDto: UpdateGenreDto) {
-    return this.genresService.update(id, updateGenreDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateGenreDto: UpdateGenreDto,
+    @LoggedUser() user: User,
+  ) {
+    return this.genresService.update(id, updateGenreDto, user);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.genresService.remove(id);
+  remove(@Param('id') id: string, @LoggedUser() user: User) {
+    return this.genresService.remove(id, user);
   }
 }

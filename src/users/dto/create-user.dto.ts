@@ -4,6 +4,7 @@ import {
   IsEmail,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsPositive,
   IsString,
   Length,
@@ -47,7 +48,7 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   // @Matches( (^\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}$), {
-  //   message:'the first character of the username must not be a number. Username must contains at least 4 characters',
+  //   message:'the CPF document must contains this mask 123.123.123-12',
   // })
   CPF: string;
 
@@ -55,6 +56,7 @@ export class CreateUserDto {
     description: 'If user is admin of server',
     example: true,
   })
+  @IsOptional()
   @IsBoolean()
   isAdmin?: boolean;
 }
