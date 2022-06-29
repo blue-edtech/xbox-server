@@ -1,5 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsNotEmpty, IsString, IsUrl, Max, Min } from 'class-validator';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUrl,
+  IsUUID,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CreateGameDto {
   @ApiProperty({
@@ -64,4 +73,8 @@ export class CreateGameDto {
   @IsNotEmpty()
   @IsUrl()
   gameplayYouTubeUrl: string;
+
+  @IsUUID('all', { each: true })
+  @IsOptional()
+  genres?: string[];
 }

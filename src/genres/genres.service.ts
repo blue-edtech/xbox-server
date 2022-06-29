@@ -12,17 +12,17 @@ import { Genre } from './entities/genre.entity';
 export class GenresService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateGenreDto, user: User) {
+  create(dto: CreateGenreDto, user: User) {
     isAdmin(user);
-    return await this.prisma.genre.create({ data: dto }).catch(handleError);
+    return this.prisma.genre.create({ data: dto }).catch(handleError);
   }
 
-  async findAll() {
-    return await this.prisma.genre.findMany();
+  findAll() {
+    return this.prisma.genre.findMany();
   }
 
-  async findAllGames() {
-    return await this.prisma.genre.findMany({
+  findAllGames() {
+    return this.prisma.genre.findMany({
       include: {
         games: {
           select: {
@@ -34,11 +34,11 @@ export class GenresService {
     });
   }
 
-  async findOne(id: string) {
-    return await this.prisma.genre.findUnique({ where: { id } });
+  findOne(id: string) {
+    return this.prisma.genre.findUnique({ where: { id } });
   }
 
-  async update(id: string, dto: UpdateGenreDto, user: User) {
+  update(id: string, dto: UpdateGenreDto, user: User) {
     isAdmin(user);
     const data: Partial<Genre> = { ...dto };
     return this.prisma.genre
