@@ -36,6 +36,19 @@ export class GamesService {
       },
     });
   }
+  findAllFavorites(id: string) {
+    return this.prisma.profileGame.findMany({
+      where: { profileId: id, favorite: true },
+      select: {
+        id: true,
+        game: {
+          select: {
+            title: true,
+          },
+        },
+      },
+    });
+  }
 
   findOne(id: string) {
     return this.prisma.game.findUnique({
