@@ -15,6 +15,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoggedUser } from 'src/utils/logged-user.decorator';
 import { User } from 'src/users/entities/user.entity';
+import { addGameDto } from './dto/add-game.dto';
 
 @UseGuards(AuthGuard())
 @ApiBearerAuth()
@@ -62,5 +63,13 @@ export class ProfilesController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.profilesService.remove(id);
+  }
+
+  @ApiOperation({
+    summary: 'Add a game/s to my profile',
+  })
+  @Post('/addGame')
+  addGame(@Body() addGame: addGameDto) {
+    return this.profilesService.addGame(addGame);
   }
 }
