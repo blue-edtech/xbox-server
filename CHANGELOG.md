@@ -1,4 +1,3 @@
 # Changelog
 
-## Docs
-    alterei a pasta de documentos
+## [1.0.0] - 2022-06-29
