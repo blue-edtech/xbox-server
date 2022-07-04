@@ -25,8 +25,8 @@ export class GamesService {
     return this.prisma.game.create({ data }).catch(handleError);
   }
 
-  findAll() {
-    return this.prisma.game.findMany({
+  async findAll() {
+    const GameList = await this.prisma.game.findMany({
       select: {
         id: true,
         title: true,
@@ -35,6 +35,12 @@ export class GamesService {
         year: true,
       },
     });
+
+    if (GameList.length == 0) {
+      return { message: 'nenhum jogo cadastrado' };
+    } else {
+      return GameList;
+    }
   }
   findAllFavorites(id: string) {
     return this.prisma.profileGame.findMany({
@@ -71,7 +77,7 @@ export class GamesService {
         data: {
           ...dto,
           genres: {
-            connect: dto.genres.map((genresID) => ({
+            connect: dto.genres?.map((genresID) => ({
               id: genresID,
             })),
           },

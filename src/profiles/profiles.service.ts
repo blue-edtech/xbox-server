@@ -24,8 +24,13 @@ export class ProfilesService {
     return this.prisma.profile.create({ data }).catch(handleError);
   }
 
-  findAll() {
-    return this.prisma.profile.findMany();
+  async findAll() {
+    const ProfileList = await this.prisma.profile.findMany();
+    if (ProfileList.length == 0) {
+      return { message: 'nenhum perfil cadastrado' };
+    } else {
+      return ProfileList;
+    }
   }
 
   findOne(id: string) {

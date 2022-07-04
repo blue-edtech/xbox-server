@@ -17,8 +17,14 @@ export class GenresService {
     return this.prisma.genre.create({ data: dto }).catch(handleError);
   }
 
-  findAll() {
-    return this.prisma.genre.findMany();
+  async findAll() {
+    const GenreList = await this.prisma.genre.findMany();
+
+    if (GenreList.length == 0) {
+      return { message: 'nenhum genero cadastrado' };
+    } else {
+      return GenreList;
+    }
   }
 
   findAllGames() {
