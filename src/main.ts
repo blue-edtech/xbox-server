@@ -2,8 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
 
 async function bootstrap() {
   const allowedOrigins = process.env.IP_LIST.split(',') || '';
