@@ -9,8 +9,8 @@
 
 ### In Progress
 
-- [ ]  Lista de jogos do perfil;
-- [ ]  [AUTH] [CRUD] Favoritar jogo;
+- [ ] Lista de jogos do perfil;
+- [ ] [AUTH] [CRUD] Favoritar jogo;
 - [ ] [CRUD] genero no jogo
 
 
