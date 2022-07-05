@@ -40,7 +40,7 @@ export class GamesController {
   }
 
   @ApiOperation({
-    summary: 'Get a list of all favorite Games from the database',
+    summary: 'Get a list of all favorite Games from Profile on database',
   })
   @Get('/favorites:id')
   findAllFavorites(@Param('id') id: string) {
