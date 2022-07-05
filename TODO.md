@@ -4,7 +4,7 @@
 - [ ] Add IMDB score na relação profileGames
 - [ ] Listar os generos do jogo
 - [ ] CPF utilizando Matches
-- [ ] [fix] profile create
+- [ ] [FIX] profile create
 
 
 ### In Progress

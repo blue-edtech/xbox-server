@@ -14,7 +14,8 @@ export class ProfilesService {
 
   create(dto: CreateProfileDto) {
     const data: Prisma.ProfileCreateInput = {
-      ...dto,
+      title: dto.title,
+      imageURL: dto.imageURL,
       user: {
         connect: {
           id: dto.userId,
