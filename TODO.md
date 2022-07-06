@@ -2,9 +2,7 @@
 
 - [ ] Alterar o IMDB score para aceitar notas 
 - [ ] Add IMDB score na relação profileGames
-- [ ] Listar os generos do jogo
-- [ ] CPF utilizando Matches
-- [ ] [FIX] profile create
+
 
 
 ### In Progress
@@ -12,7 +10,6 @@
 - [ ] Lista de jogos do perfil;
 - [ ] [AUTH] [CRUD] Favoritar jogo;
 - [ ] [CRUD] genero no jogo
-
 
 ### Done ✓
 
@@ -25,3 +22,7 @@
 - [x] [AUTH] [ADMIN] [CRUD] Usuários (apenas admins podem gerenciar usuários);
 - [x] [AUTH] [ADMIN] [CRUD] Jogos (apenas admins podem criar jogos);
 - [x] [AUTH] [ADMIN] [CRUD] Gêneros (apenas admins podem criar gêneros).
+- [x] [FIX] profile create
+- [x] CPF utilizando Matches
+- [x] CPF Validator
+- [x] Listar os generos do jogo

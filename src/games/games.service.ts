@@ -33,6 +33,11 @@ export class GamesService {
         coverImageURL: true,
         description: true,
         year: true,
+        genres: {
+          select: {
+            name: true,
+          },
+        },
       },
     });
 
@@ -62,6 +67,7 @@ export class GamesService {
       include: {
         genres: {
           select: {
+            id: true,
             name: true,
           },
         },

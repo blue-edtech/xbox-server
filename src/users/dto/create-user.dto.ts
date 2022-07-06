@@ -6,6 +6,7 @@ import {
   IsOptional,
   IsString,
   Length,
+  Matches,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -41,9 +42,9 @@ export class CreateUserDto {
   @Length(13, 14)
   @IsString()
   @IsNotEmpty()
-  // @Matches( (^\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}$), {
-  //   message:'the CPF document must contains this mask 123.123.123-12',
-  // })
+  @Matches(/^\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}$/, {
+    message: 'the CPF document must contains this mask 123.123.123-12',
+  })
   CPF: string;
 
   @ApiProperty({
