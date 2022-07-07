@@ -97,4 +97,27 @@ export class GamesService {
     await this.prisma.game.delete({ where: { id } }).catch(handleError);
     return { message: 'Game successfully deleted' };
   }
+
+  async imdbUpdate(id: string) {
+    let imdbScore = 0;
+
+    const game = await this.prisma.game
+      .findUnique({ where: { id: id } })
+      .catch(handleError);
+
+    const games = await this.prisma.profileGame.findMany({
+      where: { gameId: id },
+    });
+
+    games.forEach((g) => {
+      imdbScore += g.imdbScore;
+    });
+    imdbScore = imdbScore / games.length;
+
+    game.imdbScore = +imdbScore.toFixed(2);
+    return this.prisma.game.update({
+      where: { id: game.id },
+      data: game,
+    });
+  }
 }

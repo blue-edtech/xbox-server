@@ -42,7 +42,7 @@ export class GamesController {
   @ApiOperation({
     summary: 'Get a list of all favorite Games from Profile on database',
   })
-  @Get('/favorites:id')
+  @Get('/favorites/:id')
   findAllFavorites(@Param('id') id: string) {
     return this.gamesService.findAllFavorites(id);
   }
@@ -53,6 +53,14 @@ export class GamesController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.gamesService.findOne(id);
+  }
+
+  @ApiOperation({
+    summary: 'get a game',
+  })
+  @Get('/imdbUpdate/:id')
+  imdbUpdate(@Param('id') id: string) {
+    return this.gamesService.imdbUpdate(id);
   }
 
   @ApiOperation({

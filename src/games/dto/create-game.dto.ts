@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   IsInt,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   IsUrl,
@@ -47,14 +48,15 @@ export class CreateGameDto {
   year: number;
 
   @ApiProperty({
-    description: 'Rated score 0 - 5 (just integer numbers)',
+    description: 'Rated score 0 - 5',
     example: '3',
   })
-  @IsInt()
+  @IsNumber()
   @Min(0)
   @Max(5)
+  @IsOptional()
   @IsNotEmpty()
-  imdbScore: number;
+  imdbScore?: number;
 
   @ApiProperty({
     description: 'Trailer URL of the game on YOUTUBE',

@@ -73,6 +73,7 @@ export class ProfilesService {
           },
           game: { connect: { id: game.id } },
           favorite: game.fav,
+          imdbScore: game.imdb,
         },
       }),
     );

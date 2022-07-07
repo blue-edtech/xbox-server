@@ -41,7 +41,7 @@ model Game{
   coverImageURL      String
   description        String
   year               Int
-  imdbScore          Int
+  imdbScore          Float?
   trailerYouTubeUrl  String
   gameplayYouTubeUrl String
   genres Genre[]
@@ -70,7 +70,8 @@ model ProfileGame{
   gameId    String   @map("game_id")
 
   favorite  Boolean  @default(false)
-
+  imdbScore Int
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
