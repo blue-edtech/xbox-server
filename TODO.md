@@ -1,7 +1,6 @@
 ### Todo
 
-- [ ] Alterar o IMDB score para aceitar notas 
-- [ ] Add IMDB score na relação profileGames
+- [ ] Validar a nota de entrada no IMDB
 
 
 
@@ -26,3 +25,7 @@
 - [x] CPF utilizando Matches
 - [x] CPF Validator
 - [x] Listar os generos do jogo
+- [x] Alterar o IMDB score para aceitar notas quebradas com virgula
+- [x] Add IMDB score na relação profileGames
+- [x] [fix] exemplo do addGame no profile
+- [x] Atualizar notas do IMDB
