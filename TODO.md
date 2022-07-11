@@ -3,11 +3,11 @@
 - [ ] Validar a nota de entrada no IMDB
 
 
-
 ### In Progress
 
-- [ ] Lista de jogos do perfil;
-- [ ] [AUTH] [CRUD] Favoritar jogo;
+- [ ] [FIX] Update Favoritar jogo;
+- [ ] Atualizar o CHANGELOG
+- [ ] paginaçao do listar jogos e outros
 - [ ] [CRUD] genero no jogo
 
 ### Done ✓
@@ -29,3 +29,5 @@
 - [x] Add IMDB score na relação profileGames
 - [x] [fix] exemplo do addGame no profile
 - [x] Atualizar notas do IMDB
+- [X] Lista de jogos do perfil;
+- [X] [AUTH] [CRUD] Favoritar jogo;

@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { Prisma, ProfileGame } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { User } from 'src/users/entities/user.entity';
 import { handleError } from 'src/utils/handle-error.util';
 import { addGameDto } from './dto/add-game.dto';
 import { CreateProfileDto } from './dto/create-profile.dto';
+import { UpdateProfileGameDto } from './dto/update-game.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { Profile } from './entities/profile.entity';
 
@@ -78,5 +79,39 @@ export class ProfilesService {
       }),
     );
     return this.prisma.$transaction(transactions);
+  }
+
+  listGames(id: string) {
+    return this.prisma.profileGame
+      .findMany({
+        where: { profileId: id },
+        select: {
+          id: true,
+          favorite: true,
+          imdbScore: true,
+          game: {
+            select: {
+              id: true,
+              title: true,
+              coverImageURL: true,
+              description: true,
+            },
+          },
+        },
+      })
+      .catch(handleError);
+  }
+
+  updateGame(updateGame: UpdateProfileGameDto) {
+    const data: Partial<ProfileGame> = { ...updateGame };
+    return this.prisma.profileGame.update({
+      where: { id: updateGame.id },
+      data,
+    });
+  }
+
+  async deleteGame(id: string) {
+    await this.prisma.profileGame.delete({ where: { id } });
+    return { message: 'A game was removed from profile sucessfully' };
   }
 }
