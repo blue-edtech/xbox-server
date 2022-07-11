@@ -6,12 +6,15 @@ Aqui voce encontra todas as atualizacoes de versao da aplicacao, sempre disponiv
 ## [1.1.0] - 2022-07-11
 
 ### Added
+- Lista de jogos do perfil
 
 ### Changed
+- [CRUD] Favoritar jogo;
 
 ### Removed
 
 ### Fixed
+- exemplo do addGame no profile
 
 ## [1.0.0] - 2022-06-29
 
