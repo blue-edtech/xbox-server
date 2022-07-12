@@ -103,10 +103,17 @@ export class ProfilesService {
 
   updateGame(updateGame: UpdateProfileGameDto) {
     const data: Partial<ProfileGame> = { ...updateGame };
-    return this.prisma.profileGame.update({
-      where: { id: updateGame.id },
-      data,
-    });
+    return this.prisma.profileGame
+      .update({
+        where: {
+          profileId_gameId: {
+            gameId: updateGame.gameId,
+            profileId: updateGame.profileId,
+          },
+        },
+        data,
+      })
+      .catch(handleError);
   }
 
   async deleteGame(id: string) {

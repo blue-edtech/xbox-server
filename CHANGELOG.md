@@ -16,6 +16,7 @@ Aqui voce encontra todas as atualizacoes de versao da aplicacao, sempre disponiv
 ### Fixed
 - Exemplo do addGame no profile
 - Validar a nota de entrada no IMDB
+- Update Favoritar jogo;
 
 ## [1.0.0] - 2022-06-29
 

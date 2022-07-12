@@ -5,10 +5,10 @@ export class UpdateProfileGameDto {
   @IsUUID()
   @IsOptional()
   @ApiProperty({
-    description: 'A ProfileGame UUID',
+    description: 'A Profile UUID',
     example: 'c1c8fae3-d8a1-462b-ba24-50b17900a6dc',
   })
-  id?: string;
+  profileId?: string;
 
   @IsUUID()
   @IsOptional()

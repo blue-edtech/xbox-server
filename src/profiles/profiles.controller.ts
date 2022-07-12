@@ -51,6 +51,14 @@ export class ProfilesController {
   }
 
   @ApiOperation({
+    summary: 'Update a game on my profile',
+  })
+  @Patch('/updateGame')
+  updateGame(@Body() updateGame: UpdateProfileGameDto) {
+    return this.profilesService.updateGame(updateGame);
+  }
+
+  @ApiOperation({
     summary: 'Use to update partial or total a Profile by ID',
   })
   @Patch(':id')
@@ -72,14 +80,6 @@ export class ProfilesController {
   @Post('/addGame')
   addGame(@Body() addGame: addGameDto) {
     return this.profilesService.addGame(addGame);
-  }
-
-  @ApiOperation({
-    summary: 'Update a game on my profile',
-  })
-  @Patch('/updateGame')
-  updateGame(@Body() updateGame: UpdateProfileGameDto) {
-    return this.profilesService.updateGame(updateGame);
   }
 
   @ApiOperation({

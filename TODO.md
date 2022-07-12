@@ -2,11 +2,11 @@
 
 - [ ] Refresh token
 - [ ] Store [TIME]
+- [ ] file upload profile
 
 ### In Progress
 
 - [ ] Seeds do prisma
-- [ ] [FIX] Update Favoritar jogo;
 - [ ] paginaçao do listar jogos e outros
 - [ ] [CRUD] genero no jogo
 
@@ -33,3 +33,4 @@
 - [X] [AUTH] [CRUD] Favoritar jogo;
 - [X] Atualizar o CHANGELOG
 - [x] Validar a nota de entrada no IMDB
+- [x] [FIX] Update Favoritar jogo;
