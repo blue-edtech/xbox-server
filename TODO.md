@@ -1,9 +1,11 @@
 ### Todo
 
-- [ ] Seeds do prisma
+- [ ] Refresh token
+- [ ] Store [TIME]
 
 ### In Progress
 
+- [ ] Seeds do prisma
 - [ ] [FIX] Update Favoritar jogo;
 - [ ] paginaçao do listar jogos e outros
 - [ ] [CRUD] genero no jogo
