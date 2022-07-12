@@ -27,8 +27,10 @@ export class GenresService {
     }
   }
 
-  findAllGames() {
+  findAllGames(skip: number) {
     return this.prisma.genre.findMany({
+      skip: skip,
+      take: 10,
       include: {
         games: {
           select: {
@@ -36,6 +38,9 @@ export class GenresService {
             title: true,
           },
         },
+      },
+      orderBy: {
+        name: 'asc',
       },
     });
   }

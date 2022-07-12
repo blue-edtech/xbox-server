@@ -7,6 +7,7 @@ import {
   IsString,
   IsUrl,
   IsUUID,
+  Matches,
   Max,
   Min,
 } from 'class-validator';
@@ -65,6 +66,12 @@ export class CreateGameDto {
   @IsString()
   @IsNotEmpty()
   @IsUrl()
+  @Matches(
+    /(?:https?:\/\/)?(?:(?:(?:www\.?)?youtube\.com(?:\/(?:(?:watch\?.*?(v=[^&\s]+).*)|(?:v(\/.*))|(channel\/.+)|(?:user\/(.+))|(?:results\?(search_query=.+))))?)|(?:youtu\.be(\/.*)?))/,
+    {
+      message: 'the link must be a valid youtube link',
+    },
+  )
   trailerYouTubeUrl: string;
 
   @ApiProperty({
@@ -74,6 +81,12 @@ export class CreateGameDto {
   @IsString()
   @IsNotEmpty()
   @IsUrl()
+  @Matches(
+    /(?:https?:\/\/)?(?:(?:(?:www\.?)?youtube\.com(?:\/(?:(?:watch\?.*?(v=[^&\s]+).*)|(?:v(\/.*))|(channel\/.+)|(?:user\/(.+))|(?:results\?(search_query=.+))))?)|(?:youtu\.be(\/.*)?))/,
+    {
+      message: 'the link must be a valid youtube link',
+    },
+  )
   gameplayYouTubeUrl: string;
 
   @IsUUID('all', { each: true })
