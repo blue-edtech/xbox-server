@@ -4,10 +4,10 @@
 - [ ] Store [TIME]
 - [ ] file upload profile
 
+
 ### In Progress
 
 - [ ] Seeds do prisma
-- [ ] paginaçao do listar jogos e outros
 - [ ] [CRUD] genero no jogo
 
 ### Done ✓
@@ -34,3 +34,5 @@
 - [X] Atualizar o CHANGELOG
 - [x] Validar a nota de entrada no IMDB
 - [x] [FIX] Update Favoritar jogo;
+- [x] Paginaçao do listar jogos e outros
+- [x] validar link do youtube
