@@ -14,7 +14,8 @@ Aqui voce encontra todas as atualizacoes de versao da aplicacao, sempre disponiv
 ### Removed
 
 ### Fixed
-- exemplo do addGame no profile
+- Exemplo do addGame no profile
+- Validar a nota de entrada no IMDB
 
 ## [1.0.0] - 2022-06-29
 

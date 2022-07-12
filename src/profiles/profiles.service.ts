@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, ProfileGame } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { User } from 'src/users/entities/user.entity';
 import { handleError } from 'src/utils/handle-error.util';
 import { addGameDto } from './dto/add-game.dto';
 import { CreateProfileDto } from './dto/create-profile.dto';

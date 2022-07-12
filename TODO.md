@@ -1,12 +1,10 @@
 ### Todo
 
-- [ ] Validar a nota de entrada no IMDB
-
+- [ ] Seeds do prisma
 
 ### In Progress
 
 - [ ] [FIX] Update Favoritar jogo;
-- [ ] Atualizar o CHANGELOG
 - [ ] paginaçao do listar jogos e outros
 - [ ] [CRUD] genero no jogo
 
@@ -31,3 +29,5 @@
 - [x] Atualizar notas do IMDB
 - [X] Lista de jogos do perfil;
 - [X] [AUTH] [CRUD] Favoritar jogo;
+- [X] Atualizar o CHANGELOG
+- [x] Validar a nota de entrada no IMDB

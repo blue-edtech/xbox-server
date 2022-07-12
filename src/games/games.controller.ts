@@ -34,9 +34,9 @@ export class GamesController {
   @ApiOperation({
     summary: 'Get a list of all Games from the database',
   })
-  @Get()
-  findAll() {
-    return this.gamesService.findAll();
+  @Get(':skip')
+  findAll(@Param('skip') skip: number) {
+    return this.gamesService.findAll(+skip);
   }
 
   @ApiOperation({
