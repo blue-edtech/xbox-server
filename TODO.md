@@ -2,12 +2,10 @@
 
 - [ ] Refresh token
 - [ ] Store [TIME]
-- [ ] file upload profile
-
 
 ### In Progress
 
-- [ ] [CRUD] genero no jogo
+- [ ] file upload profile
 
 ### Done ✓
 
@@ -36,3 +34,4 @@
 - [x] Paginaçao do listar jogos e outros
 - [x] validar link do youtube
 - [x] Seeds do prisma
+- [x] [CRUD] genero no jogo [delete]

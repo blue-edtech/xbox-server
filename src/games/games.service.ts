@@ -5,6 +5,7 @@ import { User } from 'src/users/entities/user.entity';
 import { isAdmin } from 'src/utils/handle-admin.util';
 import { handleError } from 'src/utils/handle-error.util';
 import { CreateGameDto } from './dto/create-game.dto';
+import { deleteGenreDTO } from './dto/delete-genre.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
 
 @Injectable()
@@ -123,6 +124,20 @@ export class GamesService {
     return this.prisma.game.update({
       where: { id: game.id },
       data: game,
+    });
+  }
+  removeGenre(deleteGenreDTO: deleteGenreDTO) {
+    return this.prisma.game.update({
+      where: {
+        id: deleteGenreDTO.id,
+      },
+      data: {
+        genres: {
+          disconnect: deleteGenreDTO.genres.map((genresID) => ({
+            id: genresID,
+          })),
+        },
+      },
     });
   }
 }

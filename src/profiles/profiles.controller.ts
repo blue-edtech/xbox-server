@@ -7,16 +7,27 @@ import {
   Param,
   Delete,
   UseGuards,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { ProfilesService } from './profiles.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { LoggedUser } from 'src/utils/logged-user.decorator';
 import { User } from 'src/users/entities/user.entity';
 import { addGameDto } from './dto/add-game.dto';
 import { UpdateProfileGameDto } from './dto/update-game.dto';
+import { FileInterceptor } from '@nestjs/platform-express/multer';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
 
 @UseGuards(AuthGuard())
 @ApiBearerAuth()
@@ -96,5 +107,36 @@ export class ProfilesController {
   @Delete('/DeleteGame/:id')
   deleteGame(@Param('id') id: string) {
     return this.profilesService.deleteGame(id);
+  }
+
+  @Post('upload')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './upload',
+        filename: (req, file, cb) => {
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('');
+          cb(null, `${randomName}${extname(file.originalname)}`);
+        },
+      }),
+    }),
+  )
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log(file);
   }
 }

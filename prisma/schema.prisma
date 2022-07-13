@@ -44,8 +44,8 @@ model Game{
   imdbScore          Float?
   trailerYouTubeUrl  String
   gameplayYouTubeUrl String
-  genres Genre[]
-  profileGames ProfileGame[]
+  genres             Genre[]   @relation("genre-games")  
+  profileGames       ProfileGame[]
   
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
@@ -54,7 +54,7 @@ model Game{
 model Genre{
   id        String  @id @default(uuid())
   name      String  @unique
-  games     Game[]
+  games     Game[]  @relation("genre-games")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -15,6 +15,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoggedUser } from 'src/utils/logged-user.decorator';
 import { User } from 'src/users/entities/user.entity';
+import { deleteGenreDTO } from './dto/delete-genre.dto';
 
 @UseGuards(AuthGuard())
 @ApiBearerAuth()
@@ -73,6 +74,14 @@ export class GamesController {
     @LoggedUser() user: User,
   ) {
     return this.gamesService.update(id, updateGameDto, user);
+  }
+
+  @ApiOperation({
+    summary: 'Remove genres by IDs',
+  })
+  @Delete('/deleteGenre/')
+  removeGenre(@Body() deleteGenreDTO: deleteGenreDTO) {
+    return this.gamesService.removeGenre(deleteGenreDTO);
   }
 
   @ApiOperation({
