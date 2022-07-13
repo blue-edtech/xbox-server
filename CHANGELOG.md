@@ -7,6 +7,7 @@ Aqui voce encontra todas as atualizacoes de versao da aplicacao, sempre disponiv
 
 ### Added
 - Lista de jogos do perfil
+- Seeds do prisma
 
 ### Changed
 - [CRUD] Favoritar jogo;

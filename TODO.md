@@ -7,7 +7,6 @@
 
 ### In Progress
 
-- [ ] Seeds do prisma
 - [ ] [CRUD] genero no jogo
 
 ### Done ✓
@@ -36,3 +35,4 @@
 - [x] [FIX] Update Favoritar jogo;
 - [x] Paginaçao do listar jogos e outros
 - [x] validar link do youtube
+- [x] Seeds do prisma
