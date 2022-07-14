@@ -11,8 +11,8 @@
 
 - [x] [Create] Usuários (não precisa de autenticação);
 - [x] [AUTH] [GET] Homepage: 
-  -- [x] lista de jogos favoritos; 
-  -- [x] classificados por gênero;
+  - [x] lista de jogos favoritos; 
+  - [x] classificados por gênero;
 - [x] [AUTH] [CRUD] Perfis; 
 - [x] mudança de senha do usuario;
 - [x] [AUTH] [ADMIN] [CRUD] Usuários (apenas admins podem gerenciar usuários);
